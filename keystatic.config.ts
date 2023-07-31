@@ -19,8 +19,19 @@ export default config({
       slugField: "title",
       path: "src/content/topics/*",
       format: { contentField: "content" },
+      entryLayout: "content",
       schema: {
         title: fields.slug({ name: { label: "Title" } }),
+        categories: fields.array(
+          fields.relationship({
+            label: "Category",
+            collection: "categories",
+          }),
+          {
+            label: "Categories",
+            itemLabel: (props) => props.value || "Please select a category",
+          }
+        ),
         content: fields.document({
           label: "Content",
           formatting: true,
