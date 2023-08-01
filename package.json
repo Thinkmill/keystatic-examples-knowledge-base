@@ -3,6 +3,7 @@
   "version": "0.0.10",
   "license": "MIT",
   "dependencies": {
+    "@fontsource/inter": "^5.0.5",
     "@heroicons/react": "^2.0.18",
     "@keystatic/core": "^0.0.113",
     "@keystatic/next": "^0.0.11",
