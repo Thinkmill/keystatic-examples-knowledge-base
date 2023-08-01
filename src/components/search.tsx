@@ -1,16 +1,18 @@
+import Link from "next/link";
+
 export default function Search() {
   return (
     <div className="bg-rose-500 py-16">
       <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
         <header>
-          <h1 className="">
+          <Link className="" href="/">
             <span className="text-sm font-bold uppercase tracking-wide text-white">
               Puppy Owners
             </span>
             <span className="block text-4xl font-bold text-white">
               Knowledge Base
             </span>
-          </h1>
+          </Link>
           <form className="mt-4">
             <input
               type="text"

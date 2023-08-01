@@ -1,8 +1,9 @@
 import Link from "next/link";
 import { AcademicCapIcon } from "@heroicons/react/20/solid";
 
-import Search from "@/components/search";
 import { reader } from "@/lib/reader";
+import Search from "@/components/search";
+import CategoriesList from "@/components/categories-list";
 
 export async function generateStaticParams() {
   const categories = await reader.collections.categories.list();
@@ -25,7 +26,7 @@ export default async function CategoryPage({ params }) {
       <Search />
       <main>
         <div className="mx-auto max-w-5xl px-4 py-16 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-semibold">{category.name}</h2>
+          <h1 className="text-2xl font-semibold">{category.name}</h1>
           <p className="mt-4 max-w-2xl text-xl text-slate-700">
             {category.intro}
           </p>
@@ -33,7 +34,7 @@ export default async function CategoryPage({ params }) {
             {topics.map((topic) => (
               <li key={topic.slug}>
                 <Link
-                  href={`/${topic.slug}`}
+                  href={`/topics/${topic.slug}`}
                   className="flex items-center gap-4 text-slate-900 hover:underline"
                 >
                   <AcademicCapIcon className="h-4 w-4 fill-rose-500" />
@@ -42,6 +43,11 @@ export default async function CategoryPage({ params }) {
               </li>
             ))}
           </ul>
+
+          <div className="mt-16">
+            <h1 className="text-2xl font-semibold">Categories</h1>
+            <CategoriesList />
+          </div>
         </div>
       </main>
     </>
