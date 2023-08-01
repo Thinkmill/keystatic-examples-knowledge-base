@@ -46,7 +46,9 @@ export default async function CategoryPage({ params }) {
 
           <div className="mt-16">
             <h1 className="text-2xl font-semibold">Categories</h1>
-            <CategoriesList />
+            <div className="mt-6">
+              <CategoriesList />
+            </div>
           </div>
         </div>
       </main>

@@ -4,6 +4,7 @@ import { reader } from "@/lib/reader";
 
 import Search from "@/components/search";
 import Breadcrumbs from "@/components/breadcrumbs";
+import CategoriesList from "@/components/categories-list";
 
 export async function generateStaticParams() {
   const topics = await reader.collections.topics.list();
@@ -26,6 +27,11 @@ export default async function TopicPage({ params }) {
             <Breadcrumbs />
             <h1 className="mt-4">{topic.title}</h1>
             <DocumentRenderer document={topic.content} />
+            <hr />
+          </div>
+
+          <div className="mt-20">
+            <CategoriesList />
           </div>
         </div>
       </main>
