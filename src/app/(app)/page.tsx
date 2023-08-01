@@ -22,7 +22,7 @@ export default async function Homepage() {
       <Search />
       <main>
         <div className="mx-auto max-w-5xl px-4 py-16 sm:px-6 lg:px-8">
-          <h2 className="text-xl font-semibold">Browse by topic</h2>
+          <h2 className="text-2xl font-semibold">Browse by topic</h2>
 
           <ul className="mt-4 grid gap-8 md:grid-cols-2">
             {categoriesWithTopics.map((category) => (
