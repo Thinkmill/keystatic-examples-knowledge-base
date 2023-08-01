@@ -12,6 +12,35 @@ export async function generateStaticParams() {
   }));
 }
 
+export async function generateMetadata({ params }) {
+  const category = await reader.collections.categories.readOrThrow(
+    params.category
+  );
+
+  const title = category.name;
+  const description = category.intro;
+
+  return {
+    title: title,
+    description: description,
+    openGraph: {
+      title: title,
+      description: description,
+      url: "#",
+      siteName: title,
+      images: [
+        {
+          url: `/og?title=${title}`,
+          width: 1600,
+          height: 1200,
+        },
+      ],
+      locale: "en_AU",
+      type: "website",
+    },
+  };
+}
+
 export default async function CategoryPage({ params }) {
   const category = await reader.collections.categories.readOrThrow(
     params.category

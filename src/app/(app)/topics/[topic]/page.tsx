@@ -13,6 +13,42 @@ export async function generateStaticParams() {
   }));
 }
 
+export async function generateMetadata({ params }) {
+  const topic = await reader.collections.topics.readOrThrow(params.topic, {
+    resolveLinkedFiles: true,
+  });
+
+  const firstParagraph = topic.content.filter(
+    (slice) => slice.type === "paragraph"
+  )[0].children[0].text as string;
+
+  const title = topic.title;
+  const description =
+    firstParagraph.length > 155
+      ? firstParagraph.slice(0, 155) + "..."
+      : firstParagraph;
+
+  return {
+    title: title,
+    description: description,
+    openGraph: {
+      title: title,
+      description: description,
+      url: "#",
+      siteName: title,
+      images: [
+        {
+          url: `/og?title=${title}`,
+          width: 1600,
+          height: 1200,
+        },
+      ],
+      locale: "en_AU",
+      type: "website",
+    },
+  };
+}
+
 export default async function TopicPage({ params }) {
   const topic = await reader.collections.topics.readOrThrow(params.topic, {
     resolveLinkedFiles: true,
