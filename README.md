@@ -7,7 +7,7 @@
 After cloning the repo, install the dependencies:
 
 ```sh
-npm i
+npm install
 ```
 
 You can then start the Next.js dev server:
