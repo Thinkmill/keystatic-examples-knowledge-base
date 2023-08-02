@@ -7,8 +7,8 @@ export default async function CategoriesList() {
   const topics = await reader.collections.topics.all();
 
   const categoriesWithTopics = categories.map((category) => {
-    const matchingTopics = topics.filter((topic) =>
-      topic.entry.categories.includes(category.slug)
+    const matchingTopics = topics.filter(
+      (topic) => topic.entry.category === category.slug
     );
     return {
       ...category,
@@ -43,7 +43,7 @@ export default async function CategoriesList() {
             </div>
             <p className="mt-2 text-slate-700">{category.entry.intro}</p>
             <Link
-              href={`/categories/${category.slug}`}
+              href={`/${category.slug}`}
               className="absolute inset-0 rounded-xl focus:outline-none focus:ring focus:ring-rose-500"
             ></Link>
           </div>

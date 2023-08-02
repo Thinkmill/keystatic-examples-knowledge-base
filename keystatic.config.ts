@@ -22,16 +22,10 @@ export default config({
       entryLayout: "content",
       schema: {
         title: fields.slug({ name: { label: "Title" } }),
-        categories: fields.array(
-          fields.relationship({
-            label: "Category",
-            collection: "categories",
-          }),
-          {
-            label: "Categories",
-            itemLabel: (props) => props.value || "Please select a category",
-          }
-        ),
+        category: fields.relationship({
+          label: "Category",
+          collection: "categories",
+        }),
         content: fields.document({
           label: "Content",
           formatting: true,
