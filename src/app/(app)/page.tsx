@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: title,
     description: description,
-    url: "#",
+    url: "https://keystatic-examples-knowledge-base.vercel.app",
     siteName: title,
     images: [
       {

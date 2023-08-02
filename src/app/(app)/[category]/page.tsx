@@ -27,7 +27,7 @@ export async function generateMetadata({ params }) {
     openGraph: {
       title: title,
       description: description,
-      url: "#",
+      url: "https://keystatic-examples-knowledge-base.vercel.app",
       siteName: title,
       images: [
         {
