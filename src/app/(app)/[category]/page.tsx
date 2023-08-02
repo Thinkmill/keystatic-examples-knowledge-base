@@ -48,7 +48,7 @@ export default async function CategoryPage({ params }) {
 
   const topics = await (
     await reader.collections.topics.all()
-  ).filter((topic) => topic.entry.categories.includes(params.category));
+  ).filter((topic) => topic.entry.category === params.category);
 
   return (
     <>
@@ -63,7 +63,7 @@ export default async function CategoryPage({ params }) {
             {topics.map((topic) => (
               <li key={topic.slug}>
                 <Link
-                  href={`/topics/${topic.slug}`}
+                  href={`/${params.category}/${topic.slug}`}
                   className="flex items-center gap-4 text-slate-900 hover:underline"
                 >
                   <AcademicCapIcon className="h-4 w-4 fill-rose-500" />

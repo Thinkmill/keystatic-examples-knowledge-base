@@ -54,13 +54,19 @@ export default async function TopicPage({ params }) {
     resolveLinkedFiles: true,
   });
 
+  const category = await reader.collections.categories.readOrThrow(
+    params.category
+  );
+
   return (
     <>
       <Search />
       <main>
         <div className="mx-auto max-w-5xl px-4 py-16 sm:px-6 lg:px-8">
           <div className="prose mx-auto max-w-prose">
-            <Breadcrumbs />
+            <Breadcrumbs
+              crumbs={[{ name: category.name, href: `/${params.category}` }]}
+            />
             <h1 className="mt-4">{topic.title}</h1>
             <DocumentRenderer document={topic.content} />
             <hr />
