@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { notFound } from "next/navigation";
 import { AcademicCapIcon } from "@heroicons/react/20/solid";
 
 import { reader } from "@/lib/reader";
@@ -13,9 +14,9 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }) {
-  const category = await reader.collections.categories.readOrThrow(
-    params.category
-  );
+  const category = await reader.collections.categories.read(params.category);
+
+  if (!category) return notFound();
 
   const title = category.name;
   const description = category.intro;
@@ -42,9 +43,9 @@ export async function generateMetadata({ params }) {
 }
 
 export default async function CategoryPage({ params }) {
-  const category = await reader.collections.categories.readOrThrow(
-    params.category
-  );
+  const category = await reader.collections.categories.read(params.category);
+
+  if (!category) return notFound();
 
   const topics = await (
     await reader.collections.topics.all()

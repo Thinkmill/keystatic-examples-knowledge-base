@@ -1,3 +1,4 @@
+import { notFound } from "next/navigation";
 import { DocumentRenderer } from "@keystatic/core/renderer";
 
 import { reader } from "@/lib/reader";
@@ -14,9 +15,11 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }) {
-  const topic = await reader.collections.topics.readOrThrow(params.topic, {
+  const topic = await reader.collections.topics.read(params.topic, {
     resolveLinkedFiles: true,
   });
+
+  if (!topic) throw new Error("Topic not found");
 
   const firstParagraph = topic.content.filter(
     (slice) => slice.type === "paragraph"
@@ -50,13 +53,14 @@ export async function generateMetadata({ params }) {
 }
 
 export default async function TopicPage({ params }) {
-  const topic = await reader.collections.topics.readOrThrow(params.topic, {
+  const topic = await reader.collections.topics.read(params.topic, {
     resolveLinkedFiles: true,
   });
 
-  const category = await reader.collections.categories.readOrThrow(
-    params.category
-  );
+  if (!topic) return notFound();
+
+  const category = await reader.collections.categories.read(params.category);
+  if (!category) throw new Error("Category not found");
 
   return (
     <>
