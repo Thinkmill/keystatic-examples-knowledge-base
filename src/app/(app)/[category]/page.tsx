@@ -33,6 +33,11 @@ export async function generateMetadata({ params }) {
       images: [
         {
           url: `/og?title=${title}`,
+          width: 800,
+          height: 600,
+        },
+        {
+          url: `/og?title=${title}`,
           width: 1600,
           height: 1200,
         },

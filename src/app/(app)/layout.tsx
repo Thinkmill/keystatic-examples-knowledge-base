@@ -5,6 +5,7 @@ const title = "Puppy Owners Hub";
 const description = "A knowledge base for happy new puppy owners";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://keystatic-examples-knowledge-base.vercel.app"),
   title: {
     default: title,
     template: `%s | ${title}`,
@@ -13,9 +14,14 @@ export const metadata: Metadata = {
   openGraph: {
     title: title,
     description: description,
-    url: "https://keystatic-examples-knowledge-base.vercel.app",
+    url: "/",
     siteName: title,
     images: [
+      {
+        url: `/og?title=${title}`,
+        width: 800,
+        height: 600,
+      },
       {
         url: `/og?title=${title}`,
         width: 1600,
