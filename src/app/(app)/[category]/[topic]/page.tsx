@@ -8,9 +8,10 @@ import Breadcrumbs from "@/components/breadcrumbs";
 import CategoriesList from "@/components/categories-list";
 
 export async function generateStaticParams() {
-  const topics = await reader.collections.topics.list();
+  const topics = await reader.collections.topics.all();
   return topics.map((topic) => ({
-    topic,
+    category: topic.entry.category,
+    topic: topic.slug,
   }));
 }
 

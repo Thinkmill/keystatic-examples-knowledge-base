@@ -5,6 +5,7 @@ import { AcademicCapIcon } from "@heroicons/react/20/solid";
 import { reader } from "@/lib/reader";
 import Search from "@/components/search";
 import CategoriesList from "@/components/categories-list";
+import Breadcrumbs from "@/components/breadcrumbs";
 
 export async function generateStaticParams() {
   const categories = await reader.collections.categories.list();
@@ -56,7 +57,8 @@ export default async function CategoryPage({ params }) {
       <Search />
       <main>
         <div className="mx-auto max-w-5xl px-4 py-16 sm:px-6 lg:px-8">
-          <h1 className="text-2xl font-semibold">{category.name}</h1>
+          <Breadcrumbs />
+          <h1 className="mt-4 text-2xl font-semibold">{category.name}</h1>
           <p className="mt-4 max-w-2xl text-xl text-slate-700">
             {category.intro}
           </p>
