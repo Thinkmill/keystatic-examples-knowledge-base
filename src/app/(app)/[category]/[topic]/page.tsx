@@ -1,8 +1,8 @@
 import { notFound } from "next/navigation";
-import { DocumentRenderer } from "@keystatic/core/renderer";
 
 import { reader } from "@/lib/reader";
 
+import DocumentRenderer from "@/components/document-renderer";
 import Search from "@/components/search";
 import Breadcrumbs from "@/components/breadcrumbs";
 import CategoriesList from "@/components/categories-list";

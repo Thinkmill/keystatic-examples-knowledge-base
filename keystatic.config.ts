@@ -1,4 +1,9 @@
 import { config, collection, fields } from "@keystatic/core";
+import { cloudImage } from "@keystatic/core/component-blocks";
+
+export const componentBlocks = {
+  "cloud-image": cloudImage({ label: "Image" }),
+};
 
 export default config({
   storage: {
@@ -28,6 +33,7 @@ export default config({
         }),
         content: fields.document({
           label: "Content",
+          componentBlocks,
           formatting: true,
           dividers: true,
           links: true,
