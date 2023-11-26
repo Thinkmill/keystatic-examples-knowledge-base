@@ -10,6 +10,7 @@
     "@tailwindcss/typography": "^0.5.9",
     "flexsearch": "^0.7.31",
     "next": "^13.4.8",
+    "pagefind": "^1.0.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
@@ -25,6 +26,7 @@
   "scripts": {
     "build": "next build",
     "dev": "next dev",
-    "start": "next start"
+    "start": "next start",
+    "postbuild": "pagefind --site .next --output-path .next/static/chunks/app/\\(app\\)/pagefind"
   }
 }
