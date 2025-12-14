@@ -14,7 +14,10 @@ export async function generateStaticParams() {
   }));
 }
 
-export async function generateMetadata({ params }) {
+export async function generateMetadata(props: {
+  params: Promise<{ category: string }>;
+}) {
+  const params = await props.params;
   const category = await reader.collections.categories.read(params.category);
 
   if (!category) return notFound();
@@ -48,7 +51,10 @@ export async function generateMetadata({ params }) {
   };
 }
 
-export default async function CategoryPage({ params }) {
+export default async function CategoryPage(props: {
+  params: Promise<{ category: string }>;
+}) {
+  const params = await props.params;
   const category = await reader.collections.categories.read(params.category);
 
   if (!category) return notFound();

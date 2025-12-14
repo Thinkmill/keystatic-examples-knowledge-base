@@ -15,7 +15,10 @@ export async function generateStaticParams() {
   }));
 }
 
-export async function generateMetadata({ params }) {
+export async function generateMetadata(props: {
+  params: Promise<{ category: string; topic: string }>;
+}) {
+  const params = await props.params;
   const topic = await reader.collections.topics.read(params.topic, {
     resolveLinkedFiles: true,
   });
@@ -57,7 +60,10 @@ export async function generateMetadata({ params }) {
   };
 }
 
-export default async function TopicPage({ params }) {
+export default async function TopicPage(props: {
+  params: Promise<{ category: string; topic: string }>;
+}) {
+  const params = await props.params;
   const topic = await reader.collections.topics.read(params.topic, {
     resolveLinkedFiles: true,
   });

@@ -1,10 +1,17 @@
 export type ImageProps = {
   src: string;
   alt: string;
-  height: number;
-  width: number;
+  height: number | null;
+  width: number | null;
 };
 
 export function CloudImage({ src, alt, height, width }: ImageProps) {
-  return <img alt={alt} src={src} height={height} width={width} />;
+  return (
+    <img
+      alt={alt}
+      src={src}
+      height={height ?? undefined}
+      width={width ?? undefined}
+    />
+  );
 }

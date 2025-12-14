@@ -5,16 +5,17 @@
   "dependencies": {
     "@fontsource/inter": "^5.0.5",
     "@heroicons/react": "^2.0.18",
-    "@keystatic/core": "^0.1.1",
-    "@keystatic/next": "^1.0.0",
+    "@keystatic/core": "^0.5.48",
+    "@keystatic/next": "^5.0.4",
     "@tailwindcss/typography": "^0.5.9",
     "flexsearch": "^0.7.31",
-    "next": "^13.4.8",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "next": "^16.0.10",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3"
   },
   "devDependencies": {
-    "@types/react": "^18.2.8",
+    "@types/node": "^25.0.2",
+    "@types/react": "^19.2.7",
     "autoprefixer": "^10.4.14",
     "postcss": "^8.4.27",
     "prettier": "^2.8.8",
